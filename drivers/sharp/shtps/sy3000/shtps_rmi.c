@@ -1464,7 +1464,7 @@ static void shtps_read_touchevent_infacetouchmode(struct shtps_rmi_spi *ts)
 	shtps_check_facetouchoff(ts);
 
 	if(SHTPS_FACETOUCH_DETECT_OFF_NOTIFY_BY_ALLTU){
-		if( (ts->facetouch.touch_num != 0) && (ts->fw_report_info.finger_num == 0) ){
+		if( (ts->fw_report_info_store.finger_num != 0) && (ts->fw_report_info.finger_num == 0) ){
 			if(SHTPS_FACETOUCH_DETECT_CHECK_PALMFLAG == 1){
 				if(ts->facetouch.palm_det == 0){
 					shtps_notify_facetouchoff(ts, 1);
@@ -1477,7 +1477,7 @@ static void shtps_read_touchevent_infacetouchmode(struct shtps_rmi_spi *ts)
 	
 	#if defined( SHTPS_FACETOUCH_OFF_DETECT_CHATTER_CHK_ENABLE )
 		if(ts->facetouch.facetouch_off_notify_delayed_state == 1){
-			if(info.finger_num > 0){
+			if(ts->fw_report_info.finger_num > 0){
 				shtps_delayed_facetouch_off_notify_cancel(ts);
 				SHTPS_FACETOUCH_OFF_DETECT_CHATT_PRINT("Detect touch. cancel touch off timer");
 			}
