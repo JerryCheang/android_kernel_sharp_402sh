@@ -595,6 +595,10 @@ static char mipi_sh_aria_cmd_DeepStanby[2] = {0x4F, 0x01};
 static char mipi_sh_aria_cmd_TE_On[2] = {0x35, 0x00};
 static char mipi_sh_aria_cmd_OTP_Reload_Control[2] = {0xFB, 0x01};
 static char mipi_sh_aria_cmd_MIPIbias[2] = {0x45, 0x3C};
+static char mipi_sh_aria_cmd_SRAM_RW_timing[2][2] = {
+    {0xB5, 0x86},
+    {0xB6, 0x77}
+};
 static char mipi_sh_aria_cmd_SRAMPreChargeVoltage[2] = {0xB8, 0xAD};
 
 
@@ -1114,6 +1118,8 @@ static struct shdisp_dsi_cmd_desc mipi_sh_aria_cmds_output_signal[] = {
     {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_SwitchCommand[8],       0},
     {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_OTP_Reload_Control,     0},
     {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_MIPIbias,               0},
+    {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_SRAM_RW_timing[0],      0},
+    {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_SRAM_RW_timing[1],      0},
     {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_SRAMPreChargeVoltage,   0},
     {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_SwitchCommand[7],       0},
     {SHDISP_DTYPE_DCS_WRITE1, 2, mipi_sh_aria_cmd_OTP_Reload_Control,     0},

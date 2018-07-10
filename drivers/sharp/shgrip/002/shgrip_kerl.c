@@ -2616,9 +2616,20 @@ static int shgrip_ioctl_download_fw(void __user *argp)
 		return GRIP_RESULT_FAILURE;
 	}
 	
+	if(fw_info.size < 0 || fw_info.size > SHGRIP_FW_SIZE){
+		SHGRIP_ERR("fw_info.size err\n");
+		return GRIP_RESULT_FAILURE;
+	}
+	
 	fw_data = kmalloc(fw_info.size, GFP_KERNEL);
 	if (!fw_data) {
 		SHGRIP_ERR("kmalloc failed\n");
+		return GRIP_RESULT_FAILURE;
+	}
+	
+	if(!fw_info.data){
+		SHGRIP_ERR("fw_info.data is NULL\n");
+		kfree(fw_data);
 		return GRIP_RESULT_FAILURE;
 	}
 	
