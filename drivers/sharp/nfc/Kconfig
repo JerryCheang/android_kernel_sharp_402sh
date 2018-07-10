@@ -1,0 +1,49 @@
+#
+# NFC device configuration
+#
+
+menu "NFC driver"
+
+comment "SHARP NFC device drivers"
+
+config SHNFC3
+	bool "NFC device drivers"
+	depends on SERIAL_MSM_HSL && I2C
+	default y
+	help
+	  Enable NFC(Faver3.0) driver.
+
+config SEC_NFC
+    bool "Samsung NFC driver"
+	depends on SHNFC3
+    default y
+    help
+      SAMSUNG NFC Driver.
+      This driver provides support for SAMSUNG NFC products.
+      You should select your NFC product and interface.
+
+      Say Y here to compile support for SAMSUNG NFC driver into the
+      kernel.
+
+choice
+    prompt "SEC NFC Products"
+    depends on SEC_NFC
+    default SEC_NFC_S3FNRN3_FN
+config SEC_NFC_S3FNRN3
+    bool "S3FNRN3"
+config SEC_NFC_S3FNRN3_FN
+    bool "S3FNRN3 for Felica Network"
+endchoice
+
+choice
+    prompt "SEC NFC Interface"
+    depends on SEC_NFC
+    default SEC_NFC_UART
+config SEC_NFC_UART
+    bool "UART"
+config SEC_NFC_I2C
+    bool "I2C"
+endchoice
+
+endmenu
+
