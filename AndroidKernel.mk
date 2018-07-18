@@ -74,7 +74,7 @@ define format_kernel_config_engineering
 endef
 else
 define CONFIGY
-"CONFIG_DEVMEM CONFIG_DEVKMEM CONFIG_ANDROID_ENGINEERING CONFIG_SECURITY_MIYABI_ENGINEERING_BUILD CONFIG_MSM_DLOAD_MODE"
+"CONFIG_DEVMEM CONFIG_DEVKMEM CONFIG_ANDROID_ENGINEERING CONFIG_MSM_DLOAD_MODE"
 endef
 define CONFIGN
 ""
@@ -122,7 +122,7 @@ $(KERNEL_OUT)/piggy : $(TARGET_PREBUILT_INT_KERNEL)
 	$(hide) gunzip -c $(KERNEL_OUT)/arch/arm/boot/compressed/piggy.gzip > $(KERNEL_OUT)/piggy
 
 $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_OUT) $(KERNEL_CONFIG) $(KERNEL_HEADERS_INSTALL)
-	$(MAKE) -C kernel O=../$(KERNEL_OUT) ARCH=arm CROSS_COMPILE=arm-eabi-
+	$(MAKE) -C kernel O=../$(KERNEL_OUT) ARCH=arm CROSS_COMPILE=arm-eabi- zImage-dtb
 	$(MAKE) -C kernel O=../$(KERNEL_OUT) ARCH=arm CROSS_COMPILE=arm-eabi- modules
 	$(MAKE) -C kernel O=../$(KERNEL_OUT) INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) INSTALL_MOD_STRIP=1 ARCH=arm CROSS_COMPILE=arm-eabi- modules_install
 	$(mv-modules)
