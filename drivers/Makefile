@@ -168,7 +168,7 @@ obj-$(CONFIG_SENSORS_CDC_PROXIMITY)	+= sharp/proximity_cdc/
 obj-$(CONFIG_SENSOR_SHGRIP)	+= sharp/shgrip/
 
 obj-$(CONFIG_TOUCHSCREEN_SHTPS) += sharp/shtps/
-obj-$(CONFIG_PRONTO_WLAN) += sharp/wifi/qcom/prima/
+#obj-$(CONFIG_PRONTO_WLAN) += sharp/wifi/qcom/prima/
 obj-$(CONFIG_SHIRDA)		+= sharp/shirda/
 #obj-$(CONFIG_SHMDS)		+= sharp/shmds/
 obj-$(CONFIG_SHUB)		+= sharp/shsensor_hub/ml630q790/
